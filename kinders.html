@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seasoning the Feed — Kinder's Seasoning · Sakhi Shah</title>
+<meta name="description" content="A 30-day social listening analysis of Kinder's Seasoning — emotion by platform, mention share, flavor performance, and recommendations. Case study by Sakhi Shah.">
+<link rel="canonical" href="https://sakhishah03.github.io/SakhiShah/kinders.html">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Seasoning the Feed — Kinder's Seasoning case study">
+<meta property="og:description" content="A 30-day social listening analysis: emotion by platform, mention share, flavor performance, and what we recommended to McCormick's advisors.">
+<meta property="og:url" content="https://sakhishah03.github.io/SakhiShah/kinders.html">
+<meta property="og:image" content="https://sakhishah03.github.io/SakhiShah/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B1F1A; --surface:#112720; --line:rgba(245,222,218,0.14); --lineSolid:#2A4038;
+  --ink:#F5DEDA; --ink-soft:#C4A8A3; --taupe:#B49B96; --accent:#E3B8B2;
+  --font-display:'Fraunces',serif; --font-body:'Inter',sans-serif; --font-mono:'IBM Plex Mono',monospace;
+  --ease:cubic-bezier(.65,0,.35,1);
+}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; scroll-padding-top:72px; }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); -webkit-font-smoothing:antialiased; line-height:1.6; overflow-x:hidden; }
+h1,h2,h3,p{ margin:0; }
+a{ color:inherit; }
+.grain{ position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.03; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.wrap{ width:min(920px,100% - 64px); margin-inline:auto; position:relative; z-index:2; }
+@media(max-width:720px){ .wrap{ width:min(920px,100% - 36px); } }
+.display{ font-family:var(--font-display); } .display-italic{ font-family:var(--font-display); font-style:italic; }
+.eyebrow{ font-family:var(--font-mono); font-size:12.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); font-weight:500; }
+.section-title{ font-family:var(--font-display); font-size:clamp(26px,3vw,32px); color:var(--ink); font-weight:400; }
+.sub{ font-size:14px; color:var(--ink-soft); margin-top:8px; margin-bottom:22px; }
+
+/* top bar */
+.topbar{ position:sticky; top:0; z-index:50; height:62px; display:flex; align-items:center; background:rgba(11,31,26,.82); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+.topbar .wrap{ display:flex; align-items:center; justify-content:space-between; }
+.topbar .mark{ font-family:var(--font-display); font-style:italic; font-size:19px; text-decoration:none; color:var(--ink); }
+.topbar .back{ font-family:var(--font-mono); font-size:12.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft); text-decoration:none; transition:color .3s var(--ease); }
+.topbar .back:hover{ color:var(--accent); }
+
+.block{ padding:48px 0; border-bottom:1px solid var(--line); }
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+@media(max-width:720px){ .grid-2{ grid-template-columns:1fr; } .grid-4{ grid-template-columns:repeat(2,1fr); } }
+
+.stat-card{ background:var(--surface); border:1px solid var(--line); padding:22px 18px; }
+.stat-num{ font-family:var(--font-display); font-size:clamp(30px,4vw,42px); color:var(--ink); line-height:1; }
+.stat-label{ font-family:var(--font-mono); font-size:12px; letter-spacing:.03em; color:var(--ink-soft); margin-top:8px; max-width:200px; }
+
+/* platform explorer */
+.tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px; }
+.tab-btn{ padding:9px 16px; font-size:13px; font-family:var(--font-mono); cursor:pointer; background:transparent; color:var(--ink-soft); border:1px solid var(--lineSolid); transition:all .15s ease; }
+.tab-btn.active{ background:var(--accent); color:var(--bg); border-color:var(--accent); }
+.chartbox{ background:var(--surface); border:1px solid var(--line); padding:20px; height:280px; display:flex; align-items:center; justify-content:center; }
+.legend{ display:grid; grid-template-columns:1fr 1fr; gap:6px 16px; margin-bottom:18px; }
+.legend .li{ display:flex; align-items:center; gap:8px; font-size:13px; }
+.legend .dot{ width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+.legend .li span.nm{ color:var(--ink-soft); } .legend .li span.vl{ color:var(--ink); margin-left:auto; font-family:var(--font-mono); font-size:12px; }
+.note{ font-size:14.5px; line-height:1.65; color:var(--ink); border-left:2px solid var(--accent); padding-left:16px; font-family:var(--font-display); font-style:italic; }
+.donut-seg{ transition:opacity .2s ease, transform .2s ease; transform-origin:center; cursor:default; }
+.donut-seg:hover{ opacity:1 !important; }
+
+/* bar chart */
+.barbox{ background:var(--surface); border:1px solid var(--line); padding:24px 18px 14px; }
+.bars{ display:flex; align-items:flex-end; gap:12px; height:210px; }
+.bars .col{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:8px; }
+.bars .bar{ width:100%; max-width:52px; background:linear-gradient(180deg,#E3B8B2,#c98f88); border-radius:3px 3px 0 0; position:relative; transition:filter .2s ease; }
+.bars .col:hover .bar{ filter:brightness(1.12); }
+.bars .val{ position:absolute; top:-19px; left:0; right:0; text-align:center; font-family:var(--font-mono); font-size:11px; color:var(--ink); }
+.bars .xl{ font-family:var(--font-mono); font-size:11px; color:var(--ink-soft); }
+
+/* timing */
+.timing{ background:var(--surface); border:1px solid var(--line); padding:30px; display:flex; align-items:center; gap:28px; flex-wrap:wrap; }
+
+/* flavors */
+.flavor{ border-bottom:1px solid var(--line); padding:20px 4px; cursor:pointer; }
+.flavor-top{ display:flex; justify-content:space-between; align-items:center; }
+.flavor .name{ font-family:var(--font-display); font-style:italic; font-size:20px; }
+.flavor .tagchip{ font-family:var(--font-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:2px 9px; margin-left:12px; }
+.flavor .pm{ color:var(--ink-soft); font-size:22px; font-family:var(--font-display); }
+.flavor-detail{ margin-top:18px; display:none; }
+.flavor.open .flavor-detail{ display:block; }
+.flavor-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:16px; max-width:520px; }
+.flavor-stats .fn{ font-family:var(--font-display); font-size:22px; color:var(--ink); }
+.flavor .read{ font-size:14.5px; line-height:1.65; color:var(--ink-soft); max-width:560px; }
+
+/* recommendations */
+.rec{ border-top:1px solid var(--accent); padding-top:18px; }
+.rec h3{ font-family:var(--font-display); font-size:18px; margin:0 0 10px; font-weight:500; color:var(--ink); }
+.rec p{ font-size:14.5px; line-height:1.7; color:var(--ink-soft); }
+
+.footer{ padding:26px 0 44px; }
+.footer p{ font-size:12.5px; color:var(--taupe); line-height:1.6; font-family:var(--font-mono); }
+.endnav{ display:flex; justify-content:space-between; align-items:center; padding:30px 0; border-top:1px solid var(--line); flex-wrap:wrap; gap:14px; }
+.endnav a{ font-family:var(--font-mono); font-size:13px; letter-spacing:.05em; text-transform:uppercase; text-decoration:none; color:var(--bg); background:var(--accent); padding:12px 22px; border-radius:30px; transition:background .3s var(--ease); }
+.endnav a:hover{ background:var(--ink); }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="mark" href="index.html">Sakhi Shah</a>
+    <a class="back" href="index.html#work">← All work</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="block" style="padding-top:64px;">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom:14px;">Selected Work — Social Media Analytics</div>
+    <h1 class="display-italic" style="font-size:clamp(38px,6vw,58px); line-height:1.05; font-weight:400;">Seasoning the Feed</h1>
+    <p style="max-width:600px; font-size:16px; line-height:1.65; color:var(--ink-soft); margin-top:20px;">
+      A 30-day social listening analysis of Kinder's Seasoning, built with a six-person team for our Social Media Analytics course at Johns Hopkins Carey, using Brand24 data and presented to McCormick's industry advisors.
+    </p>
+    <div class="grid-4" style="margin-top:36px;">
+      <div class="stat-card"><div class="stat-num">11M+</div><div class="stat-label">Social reach, 30 days</div></div>
+      <div class="stat-card"><div class="stat-num">707</div><div class="stat-label">Brand mentions, 30 days</div></div>
+      <div class="stat-card"><div class="stat-num">36%</div><div class="stat-label">Positive mention rate</div></div>
+      <div class="stat-card"><div class="stat-num">35%</div><div class="stat-label">Share of mentions on TikTok</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<div class="block">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom:10px;">The Problem</div>
+    <p style="font-size:16px; line-height:1.75; color:var(--ink); max-width:640px;">
+      Kinder's had visible momentum on social media but no framework for acting on it. Its name collides with Kinder chocolate in every listening tool, muddying the data. It wasn't clear whether its reach was organic or the product of an unseen influencer budget. And despite landing shelf space at Costco and Walmart, that retail presence barely showed up in online conversation — just six Costco mentions in 30 days. We set out to answer which platform, which flavors, and which posting windows were actually driving performance.
+    </p>
+  </div>
+</div>
+
+<!-- PLATFORM EXPLORER -->
+<div class="block">
+  <div class="wrap">
+    <h2 class="section-title">Where does the brand win — and lose — emotionally?</h2>
+    <p class="sub">Click a platform to see its emotional breakdown from Brand24's sentiment coding.</p>
+    <div class="tabs" id="tabs"></div>
+    <div class="grid-2">
+      <div class="chartbox"><svg id="donut" width="100%" height="100%" viewBox="0 0 280 280" preserveAspectRatio="xMidYMid meet" aria-label="Emotion breakdown donut chart"></svg></div>
+      <div style="display:flex; flex-direction:column; justify-content:center;">
+        <div class="legend" id="legend"></div>
+        <p class="note" id="note"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MENTION SHARE -->
+<div class="block">
+  <div class="wrap">
+    <h2 class="section-title">Which channel is actually generating the buzz?</h2>
+    <p class="sub">Share of all Kinder's mentions by source, last 30 days.</p>
+    <div class="barbox"><div class="bars" id="bars"></div></div>
+  </div>
+</div>
+
+<!-- TIMING -->
+<div class="block">
+  <div class="wrap">
+    <h2 class="section-title">Timing changes everything</h2>
+    <p class="sub">Peak reach window across the full 30-day window.</p>
+    <div class="timing">
+      <div>
+        <div class="display-italic" style="font-size:42px; color:var(--accent); line-height:1;">Tuesday</div>
+        <div style="font-size:20px; color:var(--ink); margin-top:4px; font-family:var(--font-mono);">11 AM</div>
+      </div>
+      <p style="font-size:14.5px; line-height:1.65; color:var(--ink-soft); flex:1; min-width:220px; border-left:2px solid var(--accent); padding-left:16px;">
+        TikTok's highest-reach posts land at 11am on Tuesdays — outperforming Facebook's best window (Wednesday, 6pm) in raw scale, and landing in the platform's joy-dominant emotional environment.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- FLAVORS -->
+<div class="block">
+  <div class="wrap">
+    <h2 class="section-title">Not every flavor tells the same story</h2>
+    <p class="sub">Click a flavor to see its full 30-day performance.</p>
+    <div id="flavors"></div>
+  </div>
+</div>
+
+<!-- RECOMMENDATIONS -->
+<div class="block" style="border-bottom:none;">
+  <div class="wrap">
+    <h2 class="section-title" style="margin-bottom:22px;">What we recommended</h2>
+    <div class="grid-2">
+      <div class="rec">
+        <div class="eyebrow" style="margin-bottom:10px;">01</div>
+        <h3>Anchor paid amplification on TikTok, Tuesday, 11am</h3>
+        <p>TikTok combines the highest reach, the most positive emotional environment (63% joy, zero anger), and the fastest-growing user base in Kinder's target demographic — Pew data shows TikTok use among U.S. adults climbed from 21% to 37% between 2021 and 2025.</p>
+      </div>
+      <div class="rec">
+        <div class="eyebrow" style="margin-bottom:10px;">02</div>
+        <h3>Seed micro-creators, not branded deals</h3>
+        <p>None of Kinder's top-performing posts carry disclosure hashtags — the reach is organic. Micro-influencers average 7–20% engagement versus roughly 5% for macro accounts. We recommended PR seeding built around Lemon Pepper's momentum, plus a recipe-challenge hashtag modeled on Frank's RedHot's #IPTSOE.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="endnav">
+    <span style="font-family:var(--font-display); font-style:italic; font-size:20px; color:var(--ink-soft);">More work &amp; the full story →</span>
+    <a href="index.html#work">Back to all work</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="wrap">
+    <p>Team project, BU.450.765 Social Media Analytics, Johns Hopkins Carey Business School — Quyen Tran, Srushti Suresh Jawade, Nanditha Yalavarthi, Sakhi Shah, Ainsley Edwards, Morgan Fierro, Logan Scully. Data: Brand24, April 5 – May 5, 2026. Presented to McCormick's industry advisors.</p>
+  </div>
+</div>
+
+<script>
+const C={accent:'#E3B8B2', taupe:'#B49B96', surface:'#112720', ink:'#F5DEDA', inkSoft:'#C4A8A3'};
+const platforms={
+  "Overall":{emotions:[["Joy",56],["Trust",22],["Anticipation",10],["Sadness",3],["Fear",3],["Surprise",2],["Anger",2],["Disgust",2]],
+    note:"Across every platform combined, joy and trust make up more than three-quarters of the emotional signal in Kinder's mentions."},
+  "TikTok":{emotions:[["Joy",63],["Trust",23],["Anticipation",10],["Surprise",3],["Anger",0]],
+    note:"Zero anger, zero meaningful negative emotion. TikTok is the one platform where the brand's world — home cooking, backyard grilling — shows up unfiltered."},
+  "X (Twitter)":{emotions:[["Joy",44],["Trust",23],["Anger",12],["Disgust",9],["Anticipation",8],["Sadness",1],["Distrust",1],["Irony",1]],
+    note:"Still net positive, but with meaningfully more friction than TikTok — 23% of mentions carry some negative charge."},
+  "Facebook":{emotions:[["Fear",32],["Sadness",32],["Joy",19],["Trust",8],["Anticipation",5],["Surprise",3]],
+    note:"The outlier. Fear and sadness dominate — a hostile backdrop for a brand built on comfort food and shared meals."}
+};
+const mentionShare=[["TikTok",35],["News",37],["X",8],["Web",5],["Videos",5],["Other",4],["Facebook",3],["Blogs",3]];
+const flavors=[
+  {key:"blend",name:"The Blend",tag:"Volume leader",mentions:"45",mChange:"+50%",reach:"610K",rChange:"-28%",positive:"11",pChange:"+22%",read:"The established name — highest raw mention count, but reach is trending down. A brand that's coasting rather than growing."},
+  {key:"lemon",name:"Lemon Pepper",tag:"Momentum",mentions:"10",mChange:"+100%",reach:"59K",rChange:"+921%",positive:"6",pChange:"+500%",read:"Low volume, but every post came back positive, and reach grew nearly 10x month over month. This is the flavor to build a campaign around."},
+  {key:"steakhouse",name:"Buttery Steakhouse",tag:"High leverage",mentions:"2",mChange:"+100%",reach:"181K",rChange:"+1824%",positive:"2",pChange:"—",read:"Only two posts in 30 days — and they reached 181,000 people. When this flavor shows up in content, it performs disproportionately well."}
+];
+
+function segColor(i){ return i%2===0 ? C.accent : C.taupe; }
+function segOpacity(i){ return Math.max(1 - i*0.09, 0.25); }
+function polar(cx,cy,r,a){ return [cx+r*Math.cos(a), cy+r*Math.sin(a)]; }
+function donutSeg(cx,cy,rIn,rOut,a0,a1){
+  const large=(a1-a0)>Math.PI?1:0;
+  const [x0,y0]=polar(cx,cy,rOut,a0),[x1,y1]=polar(cx,cy,rOut,a1);
+  const [x2,y2]=polar(cx,cy,rIn,a1),[x3,y3]=polar(cx,cy,rIn,a0);
+  return `M${x0.toFixed(2)} ${y0.toFixed(2)} A${rOut} ${rOut} 0 ${large} 1 ${x1.toFixed(2)} ${y1.toFixed(2)} L${x2.toFixed(2)} ${y2.toFixed(2)} A${rIn} ${rIn} 0 ${large} 0 ${x3.toFixed(2)} ${y3.toFixed(2)} Z`;
+}
+function renderDonut(emotions){
+  const cx=140,cy=140,rOut=118,rIn=Math.round(118*0.65);
+  const total=emotions.reduce((s,e)=>s+e[1],0)||1;
+  const pad=0.035; // radians padding
+  let ang=-Math.PI/2;
+  let svg='';
+  emotions.forEach((e,i)=>{
+    const frac=e[1]/total;
+    const a0=ang+pad/2, a1=ang+frac*Math.PI*2-pad/2;
+    if(e[1]>0 && a1>a0){
+      svg+=`<path class="donut-seg" d="${donutSeg(cx,cy,rIn,rOut,a0,a1)}" fill="${segColor(i)}" fill-opacity="${segOpacity(i).toFixed(2)}" stroke="${C.surface}" stroke-width="2"><title>${e[0]}: ${e[1]}%</title></path>`;
+    }
+    ang+=frac*Math.PI*2;
+  });
+  document.getElementById('donut').innerHTML=svg;
+}
+function renderLegend(emotions){
+  document.getElementById('legend').innerHTML=emotions.map((e,i)=>
+    `<div class="li"><span class="dot" style="background:${segColor(i)};opacity:${segOpacity(i).toFixed(2)}"></span><span class="nm">${e[0]}</span><span class="vl">${e[1]}%</span></div>`
+  ).join('');
+}
+function setPlatform(name){
+  document.querySelectorAll('#tabs .tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.p===name));
+  const d=platforms[name];
+  renderDonut(d.emotions); renderLegend(d.emotions);
+  document.getElementById('note').textContent=d.note;
+}
+// tabs
+document.getElementById('tabs').innerHTML=Object.keys(platforms).map(p=>`<button class="tab-btn" data-p="${p}">${p}</button>`).join('');
+document.querySelectorAll('#tabs .tab-btn').forEach(b=>b.addEventListener('click',()=>setPlatform(b.dataset.p)));
+setPlatform('Overall');
+
+// bars
+const maxV=Math.max(...mentionShare.map(m=>m[1]));
+document.getElementById('bars').innerHTML=mentionShare.map(m=>
+  `<div class="col"><div class="bar" style="height:${(m[1]/maxV*100).toFixed(1)}%"><span class="val">${m[1]}%</span></div><div class="xl">${m[0]}</div></div>`
+).join('');
+
+// flavors
+const fWrap=document.getElementById('flavors');
+fWrap.innerHTML=flavors.map(f=>`
+  <div class="flavor${f.key==='lemon'?' open':''}" data-key="${f.key}">
+    <div class="flavor-top">
+      <div style="display:flex; align-items:baseline; flex-wrap:wrap;"><span class="name">${f.name}</span><span class="tagchip">${f.tag}</span></div>
+      <span class="pm">${f.key==='lemon'?'–':'+'}</span>
+    </div>
+    <div class="flavor-detail">
+      <div class="flavor-stats">
+        <div><div class="fn">${f.mentions}</div><div class="eyebrow" style="font-size:11px;">Mentions (${f.mChange})</div></div>
+        <div><div class="fn">${f.reach}</div><div class="eyebrow" style="font-size:11px;">Reach (${f.rChange})</div></div>
+        <div><div class="fn">${f.positive}</div><div class="eyebrow" style="font-size:11px;">Positive (${f.pChange})</div></div>
+      </div>
+      <p class="read">${f.read}</p>
+    </div>
+  </div>`).join('');
+fWrap.querySelectorAll('.flavor').forEach(el=>{
+  el.addEventListener('click',()=>{
+    const wasOpen=el.classList.contains('open');
+    fWrap.querySelectorAll('.flavor').forEach(x=>{ x.classList.remove('open'); x.querySelector('.pm').textContent='+'; });
+    if(!wasOpen){ el.classList.add('open'); el.querySelector('.pm').textContent='–'; }
+  });
+});
+</script>
+</body>
+</html>
